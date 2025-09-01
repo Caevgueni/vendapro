@@ -8,6 +8,9 @@ public class VendaproApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VendaproApplication.class, args);
+		
+		 System.out.println("pronto");
+		 
 	}
-
+    
 }
