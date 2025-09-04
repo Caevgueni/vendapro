@@ -1,28 +1,37 @@
 package com.projetoweb.vendapro.resurces;
 
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoweb.vendapro.entities.User;
+import com.projetoweb.vendapro.services.UserService;
 
 @RestController
-@RequestMapping(value="/users")
+@RequestMapping(value = "/users")
 public class UserResurce {
-	
+
+	@Autowired
+	private UserService service;
+
 	@GetMapping
-	public ResponseEntity<User> findAll(){
-		
+	public ResponseEntity<List<User>> findAll(){
+		List<User> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+
+	}
 	
-		User u= new User(2L, "carlos", "itais1@gmail.com", "99999999", "gfdudy");
-		
-		return ResponseEntity.ok(u);
-		
-		
-		
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<User> findById(@PathVariable Long id){
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj);
 		
 	}
+	
 
 }
