@@ -13,7 +13,7 @@ import com.projetoweb.vendapro.entities.Category;
 import com.projetoweb.vendapro.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/categories")
 public class CategoryResurce {
 
 	@Autowired
