@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.projetoweb.vendapro.entities.Category;
 import com.projetoweb.vendapro.entities.Order;
+import com.projetoweb.vendapro.entities.Product;
 import com.projetoweb.vendapro.entities.User;
 import com.projetoweb.vendapro.entities.enums.OrderStatus;
 import com.projetoweb.vendapro.repositories.CategoryRepository;
 import com.projetoweb.vendapro.repositories.OrderRepository;
+import com.projetoweb.vendapro.repositories.ProductRepository;
 import com.projetoweb.vendapro.repositories.UserRepository;
 
 @Configuration 
@@ -30,6 +32,9 @@ public class Testeconfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private ProductRepository productrepository;
+	
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -39,6 +44,15 @@ public class Testeconfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers"); 
 		
+		
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		productrepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 		
 		User u1 = new User(null, "Yevgueni Fernandes", "yevgueni@gmail.com", "977777777", "123456");     
 		User u2 = new User(null, "Isnaba Bucal", "bucal@gmail.com", "977777777", "123456"); 
@@ -50,7 +64,7 @@ public class Testeconfig implements CommandLineRunner {
 		userrepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		
-		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+	
 		
 	}
 
