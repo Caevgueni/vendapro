@@ -115,7 +115,8 @@ public class Order implements Serializable {
 		double sum = 0.0;
 		for (OrderItem x: items) {
 			sum += x.getSubTotal();
-		} return sum;
+		} 
+		return sum;
 		
 	}
 	@Override
