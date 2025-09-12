@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.projetoweb.vendapro.entities.User;
 import com.projetoweb.vendapro.repositories.UserRepository;
+import com.projetoweb.vendapro.resurces.exceptions.ResourceNotFoundExceptions;
 
 
 @Service
@@ -27,7 +28,7 @@ public class UserService {
 		
 		Optional<User>   obj = repository.findById(id);
 		
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundExceptions(id));
 	}
 	
 	public User  insert(User obj) {
